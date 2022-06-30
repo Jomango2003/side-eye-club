@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import { Link, Route, Routes } from "react-router-dom";
+
+import Header from './components/Header';
+import Footer from './components/Footer';
+import EnterancePage from './components/EnterancePage';
+import Main from './components/Main';
+import Gallery from './components/Gallery';
+import Wallet from './components/Wallet';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+       <div className='header'> 
+        <Header />
+       </div>
+       <div className='main'> 
+        <div className='routes'> 
+          <Routes>
+            <Route path = '/' element ={<EnterancePage/>}/>
+            <Route path = '/home' element ={<Main/>}/>
+            <Route path = '/buy' element ={<Main/>}/>
+            <Route path = '/gallery' element ={<Gallery/>}/>
+            <Route path = '/wallet' element ={<Wallet/>}/>
+          </Routes>
+        </div>
+       </div>
+       <div className='footer'>
+        <Footer />
+       </div>
+
     </div>
-  );
+  ) 
 }
 
 export default App;
