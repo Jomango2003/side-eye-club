@@ -33,7 +33,7 @@ const Header = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={logo}/>
+          <img height={60} src={logo}/>
           <Typography
             variant="h2"
             noWrap

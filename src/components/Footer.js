@@ -1,6 +1,7 @@
 import { Container, Grid, Link } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
+import josh from '../images/joshSide.png'
 
 const Footer = () => {
   return (
