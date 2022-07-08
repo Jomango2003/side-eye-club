@@ -10,21 +10,16 @@ import road from '../images/road.png'
 const Main = () => {
 
   return (
-    <Container maxWidth='lg'>
+    <Container maxWidth='lg' sx={{backgroundColor:"white"}}>
 
       <Box m={1} pt={4}>
         <CardMedia component="img"
-          sx={
-            {
-            
-            }
-          }
           height="300"
           image={yuh}
           alt="home-image"/>
       </Box>
-      <Grid container sx={{marginTop:5, borderBottom:2, minHeight:400, backgroundColor:"#fff7fc"}}> 
-          <Grid item xs={8} sx={{backgroundColor:"#fff7fc"}} >
+      <Grid container sx={{marginTop:5, borderBottom:2, minHeight:400, backgroundColor:"white"}}> 
+          <Grid item xs={8} sx={{backgroundColor:"yellow", maxHeight:370, marginLeft:-10, padding:2, boxShadow:10}} >
           <Typography variant="h3" sx={{ fontWeight: 'bold' }}> Welcome to the Side Eye Club</Typography>
         <Typography variant="h5">
         Sye Club is a collection of exclusive
@@ -46,23 +41,14 @@ const Main = () => {
         </Button>
         </Box>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={4} sx={{marginLeft:5}}>
             <img src={quad}></img>
-          {/* <CardMedia component="img"
-          sx={
-            {
-            
-            }
-          }
-          height="300"
-          image={quad}
-          alt="home-image"/> */}
           </Grid>
       </Grid>
-      <Grid container spacing={2} sx={{marginTop:5, borderBottom:2, minHeight:400, backgroundColor:"#fff4ed"}}> 
-          <Grid item xs={4} >
-          <Typography variant="h3" sx={{ fontWeight: 'bold' }}> What is a SYE and not a SYE?</Typography>
-        <Typography variant="h5" style={{marginTop:20}}>
+      <Grid container spacing={2} sx={{marginTop:5, borderBottom:2, minHeight:400, backgroundColor:"white"}}> 
+          <Grid item xs={4} sx={{backgroundColor:"yellow", marginLeft:-8, boxShadow:10, minWidth:450, maxHeight:350}}>
+          <Typography variant="h4" sx={{ fontWeight: 'bold' }}> What is a SYE and not a SYE?</Typography>
+        <Typography variant="h6" style={{marginTop:20}}>
         SYE tokens ALWAYS have creatures that exhibit 
         a “side-eye” behavior. Although appearing peaceful 
         these creatures are VERY DANGEROUS///
@@ -74,9 +60,9 @@ const Main = () => {
           
           </Grid>
       </Grid>
-      <Grid container spacing={2} sx={{marginTop:5, borderBottom:2, minHeight:400, backgroundColor:"#fffce3"}}> 
+      <Grid container spacing={2} sx={{marginTop:0, borderBottom:2, minHeight:200, height:"80vh", width:"110vh", backgroundColor:"black", color:"white"}}> 
           <Grid item xs={8} >
-          <Typography variant="h3" sx={{ fontWeight: 'bold' }}> SYE Roadmap </Typography>
+          <Typography variant="h3" sx={{ fontWeight: 'bold', }}> Sacred SYE Roadmap </Typography>
           <List sx={{margin: "5px"}} spacing={3}>
             <ListItemText> 
               <Typography variant="h5">Step 1: Launch Website for the first time</Typography>
@@ -138,13 +124,14 @@ const Main = () => {
           </List>
           
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={4} sx={{}}>
+
             <img src={road} style={{}}></img>
           
           </Grid>
       </Grid>
-      <Grid container spacing={2} sx={{marginTop:5, minHeight:400, backgroundColor:"#e6ffe6"}}> 
-          <Grid item xs={4} >
+      <Grid container spacing={2} sx={{marginTop:5, minHeight:400, backgroundColor:"white"}}> 
+          <Grid item xs={5} sx={{marginLeft:-9, backgroundColor:"yellow",  boxShadow:20, maxHeight:300, width:300, padding: 2 }}>
           <Typography variant="h3" sx={{ fontWeight: 'bold' }}> The Team:</Typography>
         <Typography variant="h5">
         SYEC was created by Joshua choi, a
@@ -158,14 +145,11 @@ const Main = () => {
            
 
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <img src={josh} style={{}}></img>
           
           </Grid>
       </Grid>
-      
-
-     
     </Container>
    
   )
