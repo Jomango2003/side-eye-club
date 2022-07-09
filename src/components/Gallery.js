@@ -7,14 +7,26 @@ import React from 'react'
 
 import TokenCard from './TokenCard'
 
+import { fakeDatabase } from '../fakeDatabase';
+
 const Gallery = () => {
-  const [tokens, setTokens] = React.useState([]);
+  const [tokensList, setTokensList] = React.useState(fakeDatabase);
+  const [tokens, setTokens] = React.useState(tokensList);
 
   const [userInput, setUserInput] = React.useState({color:"", hat:"", rarity:""})
 
   const clearFilter = () => {
     setUserInput({color:"", hat:"", rarity:""});
   };
+
+  React.useEffect(()=>{
+      const filteredData = (userInput.color === "" && userInput.hat === "" && userInput.rarity === "") 
+      ? tokensList : tokensList.filter((token) => {
+        return  token.color === userInput.color ||
+       token.hat === userInput.hat || token.rarity === userInput.rarity});
+      setTokens(filteredData);
+      console.log("filtered: " + filteredData);
+  }, [userInput])
 
   function toggle(event){
     const {name, value} = event.target;
@@ -28,7 +40,10 @@ const Gallery = () => {
 
   function loadTokens(){
     const gallery = tokens.map(token => {
-      return <TokenCard name={token.name} color={token.color} rarity={token.rarity} />
+      return(
+      <Grid item xs={4}>
+       <TokenCard key ={token.key} name={token.key} color={token.color} hat={token.hat} rarity={token.rarity} />
+      </Grid>)
     })
     return gallery;
   }
@@ -40,7 +55,6 @@ const Gallery = () => {
             <Typography variant="h3" sx={{fontWeight: 'bold', color:"white"}}>Gallery</Typography>
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth sx={{marginTop:2}}>
-                <InputLabel id="demo-simple-select-label">Color</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -48,20 +62,19 @@ const Gallery = () => {
                   label="Color"
                   name='color'
                   onChange={toggle}
-                  sx={{backgroundColor:"white"}}
+                  sx={{backgroundColor:"white",}}
                 >
-                  <MenuItem value={'Red'}>Red</MenuItem>
-                  <MenuItem value={'Orange'}>Orange</MenuItem>
-                  <MenuItem value={'Yellow'}>Yellow</MenuItem>
-                  <MenuItem value={'Green'}>Green</MenuItem>
-                  <MenuItem value={'Blue'}>Blue</MenuItem>
-                  <MenuItem value={'Purple'}>Purple</MenuItem>
+                  <MenuItem value={'red'}>Red</MenuItem>
+                  <MenuItem value={'orange'}>Orange</MenuItem>
+                  <MenuItem value={'yellow'}>Yellow</MenuItem>
+                  <MenuItem value={'green'}>Green</MenuItem>
+                  <MenuItem value={'blue'}>Blue</MenuItem>
+                  <MenuItem value={'purple'}>Purple</MenuItem>
                 </Select>
               </FormControl>
             </Box>
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth sx={{marginTop:1}}>
-                <InputLabel id="demo-simple-select-label">Hat</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -79,7 +92,6 @@ const Gallery = () => {
             </Box>
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth sx={{marginTop:1}}>
-                <InputLabel id="demo-simple-select-label">Rarity</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -101,42 +113,7 @@ const Gallery = () => {
         </Grid>
         <Grid item xs={8} sx={{marginLeft:'4rem', minHeight:'90vh'}}> 
             <Grid container spacing={2}>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
-              <Grid item xs={4}>
-                <TokenCard name="1" rarity="legendary" hat="none"/>
-              </Grid>
+              {loadTokens()}
             </Grid>
         </Grid>
       </Grid>

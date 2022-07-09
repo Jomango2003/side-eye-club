@@ -60,7 +60,7 @@ const Main = () => {
           
           </Grid>
       </Grid>
-      <Grid container spacing={2} sx={{marginTop:0, borderBottom:2, minHeight:200, height:"80vh", width:"110vh", backgroundColor:"black", color:"white"}}> 
+      <Grid container spacing={0} sx={{padding:2,marginTop:0, borderBottom:2, minHeight:200, height:"80vh", width:"100vh", backgroundColor:"black", color:"white"}}> 
           <Grid item xs={8} >
           <Typography variant="h3" sx={{ fontWeight: 'bold', }}> Sacred SYE Roadmap </Typography>
           <List sx={{margin: "5px"}} spacing={3}>

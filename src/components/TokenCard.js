@@ -6,26 +6,20 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import example from '../images/joshSide.png'
-import example2 from '../images/sidelogo.png'
+import example2 from '../images/square.png'
 
 import React from 'react'
 
-const TokenCard = (props) => {
+const TokenCard = (props) => { // name, color, hat, rarity, img src (url) 
   return (
-    <Card sx={{ width: 200, height: 250, backgroundColor:'yellow', color:"black" }}>
-      <img height={200} src={example}></img>
-      {/* <CardMedia
-        component="img"
-        height="300"
-        image={example2}
-        alt="green iguana"
-      /> */}
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div" color={"black"}>
-          SYE #{props.name}
-        </Typography>
-      </CardContent>
-    </Card>
+    <>
+      <Card sx={{height:250, width:250, minHeight:250, minWidth:250, display:"flex", justifyContent:"center"}}>
+        <img  src={example} style={{borderRadius: 25}}></img> 
+      </Card>
+      <Typography gutterBottom variant="h5" component="div" color={"yellow"} sx={{marginTop:1, fontWeight:"bold"}}>
+            SYE #{props.name}
+      </Typography>
+    </>
   )
 }
 
