@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 const EnterancePage = () => {
   return (
-    <Container maxWidth="lg" sx={{height: '100vh'}}> 
+    <Container maxWidth="lg" sx={{height: '100vh', color:"white"}}> 
         <Typography align="center" variant='h1' sx={{marginTop:'3rem'}}> SYE CLUB</Typography>
         <Grid
         container
@@ -34,7 +34,8 @@ const EnterancePage = () => {
             <Grid item xs={3}>
                 <Button  variant='outlined' size='large' color='rawr'
                 sx={{
-                    color: "black",
+                    color: "white",
+                    backgroundColor:"white",
                     marginTop: '5rem',
                     fontSize: 20
                 }}
@@ -43,7 +44,7 @@ const EnterancePage = () => {
                 </Button>
             </Grid>
         </Grid> 
-        <Typography align="center" variant='h4'> AHh! you found my secret NFT gallery - xd. I guess you could take a look around...</Typography>     
+        <Typography align="center" variant='h4' color="white"> AHh! you found my secret NFT gallery - xd. I guess you could take a look around...</Typography>     
     </Container>
   )
 }
