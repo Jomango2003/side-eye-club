@@ -1,41 +1,55 @@
 const asyncHandler = require('express-async-handler')
+
+const syet = require('../model/syetModel')
+
 // @desc Get syet 
 // @route GET /api/syets
 // @access Private
 const getSyet = asyncHandler (async (req, res)=> {
-    if(!req.body.text){
-        res.status(400)
-        throw new Error('please add a text field');
-
-    }
-    console.log(req.body)
-    res.status(200).json({
-        message:'get side eye token '
-    })
+    const syets = await syet.find()
+    res.status(200).json(syets)
 })
 
 // @desc Set syet 
 // @route POST /api/syets
 // @access Private
-const setSyet =asyncHandler (async (req, res)=> {
-    res.status(200).json({
-        message:'set side eye token '
+const setSyet = asyncHandler (async (req, res)=> {
+    if(!req.body.text){
+        res.status(400)
+        throw new Error('please add a text field')
+    }
+    const sideToken = await syet.create({
+        text:req.body.text
     })
+    res.status(200).json(sideToken)
 })
 // @desc update syet 
 // @route PUT /api/syets/:id
 // @access Private
 const updateSyet = asyncHandler (async (req, res)=> {
-    res.status(200).json({
-        message:`Update goal ${req.params.id}`
-    })
+    const sideToken = await syet.findById(req.params.id)
+
+    if(!sideToken){
+        res.status(400)
+        throw new Error('syet not found')
+    }
+
+    const updatedSyet = await syet.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    res.status(200).json(updatedSyet)
 })
 // @desc delete syec 
 // @route DELETE /api/syets/:id
 // @access Private
 const deleteSyet = asyncHandler (async (req, res)=> {
+    const sideToken = await syet.findById(req.params.id)
+    if(!sideToken){
+        res.status(400)
+        throw new Error('syet not found')
+    }
+
+    await sideToken.remove();
     res.status(200).json({
-        message:`delete goal ${req.params.id}`
+        id: req.params.id
     })
 })
 
