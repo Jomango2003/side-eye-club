@@ -1,33 +1,24 @@
 const express = require('express')
 const router = express.Router()
 
+const {getSyet, setSyet, updateSyet, deleteSyet} = require('../controllers/syetController')
+
+router.route('/').get(getSyet).post(setSyet);
+router.route('/:id').put(updateSyet).delete(deleteSyet);
+
+/*
 // get nft
-router.get('/', (req, res)=> {
-    res.status(200).json({
-        message:'get side eye token '
-    })
-})
+router.get('/', getSyet)
 
 // create nft
-router.post('/', (req, res)=> {
-    res.status(200).json({
-        message:'set side eye token '
-    })
-})
+router.post('/', setSyet )
 
 // update nft 
-router.put('/', (req, res)=> {
-    res.status(200).json({
-        message:`update nft ${req.params.id}`
-    })
-})
+router.put('/:id', updateSyet)
 
 //delete nft
-router.delete('/', (req, res)=> {
-    res.status(200).json({
-        message:`delete nft ${req.params.id}`
-    })
-})
+router.delete('/:id', deleteSyet)
+*/
 
 
 module.exports = router;
